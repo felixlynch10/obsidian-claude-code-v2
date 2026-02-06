@@ -180,6 +180,7 @@ export class ClaudeCodeView extends ItemView {
           stdio: ["pipe", "pipe", "pipe", "pipe"],
           env: {
             ...process.env,
+            PATH: [process.env.HOME + "/.local/bin", "/opt/homebrew/bin", "/usr/local/bin", process.env.PATH].join(":"),
             TERM: "xterm-256color",
             FORCE_COLOR: "1",
           },

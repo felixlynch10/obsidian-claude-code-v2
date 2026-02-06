@@ -38,15 +38,4 @@ const context = await esbuild.context({
   target: "es2018",
   logLevel: "info",
   sourcemap: prod ? false : "inline",
-  treeShaking: true,
-  outfile: join(__dirname, "main.js"),
-  loader: { ".css": "empty" },
-  minify: prod,
-});
-
-if (prod) {
-  await context.rebuild();
-  process.exit(0);
-} else {
-  await context.watch();
-}
+  tree
