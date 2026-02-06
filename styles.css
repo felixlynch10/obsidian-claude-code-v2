@@ -1,0 +1,276 @@
+/**
+ * Copyright (c) 2014 The xterm.js authors. All rights reserved.
+ * Copyright (c) 2012-2013, Christopher Jeffrey (MIT License)
+ * https://github.com/chjj/term.js
+ * @license MIT
+ */
+
+.xterm {
+    cursor: text;
+    position: relative;
+    user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+.xterm.focus,
+.xterm:focus {
+    outline: none;
+}
+
+.xterm .xterm-helpers {
+    position: absolute;
+    top: 0;
+    z-index: 5;
+}
+
+.xterm .xterm-helper-textarea {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    position: absolute;
+    opacity: 0;
+    left: -9999em;
+    top: 0;
+    width: 0;
+    height: 0;
+    z-index: -5;
+    white-space: nowrap;
+    overflow: hidden;
+    resize: none;
+}
+
+.xterm .composition-view {
+    background: #000;
+    color: #FFF;
+    display: none;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.xterm .composition-view.active {
+    display: block;
+}
+
+.xterm .xterm-viewport {
+    background-color: #000;
+    overflow-y: scroll;
+    cursor: default;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.xterm .xterm-screen {
+    position: relative;
+}
+
+.xterm .xterm-screen canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.xterm .xterm-scroll-area {
+    visibility: hidden;
+}
+
+.xterm-char-measure-element {
+    display: inline-block;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: -9999em;
+    line-height: normal;
+}
+
+.xterm.enable-mouse-events {
+    cursor: default;
+}
+
+.xterm.xterm-cursor-pointer,
+.xterm .xterm-cursor-pointer {
+    cursor: pointer;
+}
+
+.xterm.column-select.focus {
+    cursor: crosshair;
+}
+
+.xterm .xterm-accessibility:not(.debug),
+.xterm .xterm-message {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    color: transparent;
+    pointer-events: none;
+}
+
+.xterm .xterm-accessibility-tree:not(.debug) *::selection {
+    color: transparent;
+}
+
+.xterm .xterm-accessibility-tree {
+    user-select: text;
+    white-space: pre;
+}
+
+.xterm .live-region {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.xterm-dim {
+    opacity: 1 !important;
+}
+
+.xterm-underline-1 { text-decoration: underline; }
+.xterm-underline-2 { text-decoration: double underline; }
+.xterm-underline-3 { text-decoration: wavy underline; }
+.xterm-underline-4 { text-decoration: dotted underline; }
+.xterm-underline-5 { text-decoration: dashed underline; }
+
+.xterm-overline {
+    text-decoration: overline;
+}
+
+.xterm-overline.xterm-underline-1 { text-decoration: overline underline; }
+.xterm-overline.xterm-underline-2 { text-decoration: overline double underline; }
+.xterm-overline.xterm-underline-3 { text-decoration: overline wavy underline; }
+.xterm-overline.xterm-underline-4 { text-decoration: overline dotted underline; }
+.xterm-overline.xterm-underline-5 { text-decoration: overline dashed underline; }
+
+.xterm-strikethrough {
+    text-decoration: line-through;
+}
+
+.xterm-screen .xterm-decoration-container .xterm-decoration {
+    z-index: 6;
+    position: absolute;
+}
+
+.xterm-screen .xterm-decoration-container .xterm-decoration.xterm-decoration-top-layer {
+    z-index: 7;
+}
+
+.xterm-decoration-overview-ruler {
+    z-index: 8;
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+}
+
+.xterm-decoration-top {
+    z-index: 2;
+    position: relative;
+}
+
+/* ============================================================
+ * Claude Code Sidebar custom styles
+ * ============================================================ */
+
+.claude-code-terminal-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--background-primary);
+}
+
+.claude-code-terminal-wrapper {
+    flex: 1;
+    min-height: 0;
+    padding: 4px;
+    overflow: hidden;
+}
+
+.claude-code-terminal-wrapper .xterm {
+    height: 100%;
+    width: 100%;
+}
+
+.claude-code-terminal-wrapper .xterm-viewport {
+    overflow-y: auto !important;
+}
+
+.claude-code-terminal-wrapper .xterm-helper-textarea {
+    opacity: 0 !important;
+    pointer-events: none;
+    position: absolute;
+}
+
+.claude-code-terminal-wrapper .xterm-viewport::-webkit-scrollbar {
+    width: 8px;
+}
+
+.claude-code-terminal-wrapper .xterm-viewport::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.claude-code-terminal-wrapper .xterm-viewport::-webkit-scrollbar-thumb {
+    background-color: var(--background-modifier-border);
+    border-radius: 4px;
+}
+
+.claude-code-terminal-wrapper .xterm-viewport::-webkit-scrollbar-thumb:hover {
+    background-color: var(--background-modifier-border-hover);
+}
+
+.claude-code-terminal-wrapper .xterm .xterm-selection div {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ============================================================
+ * Claude Code v2 - Header Bar
+ * ============================================================ */
+.claude-code-header { display: flex; align-items: center; gap: 4px; padding: 4px 8px; border-bottom: 1px solid var(--background-modifier-border); background-color: var(--background-secondary); flex-shrink: 0; }
+.claude-code-header-btn { padding: 4px; border-radius: 4px; cursor: pointer; color: var(--text-muted); background: none; border: none; }
+.claude-code-header-btn:hover { color: var(--text-normal); background-color: var(--background-modifier-hover); }
+.claude-code-session-label { flex: 1; font-size: 12px; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0 4px; }
+
+/* ============================================================
+ * Claude Code v2 - Tool Approval Modal
+ * ============================================================ */
+.tool-approval-modal { max-width: 600px; }
+.tool-approval-title { margin-top: 0; margin-bottom: 8px; color: var(--text-accent); }
+.tool-approval-description { color: var(--text-muted); margin-bottom: 12px; }
+.tool-approval-label { font-weight: 600; font-size: 13px; margin-bottom: 4px; color: var(--text-normal); }
+.tool-approval-command-block pre { background-color: var(--background-secondary); border: 1px solid var(--background-modifier-border); border-radius: 4px; padding: 8px 12px; overflow-x: auto; font-family: var(--font-monospace); font-size: 13px; margin: 4px 0 12px 0; }
+.tool-approval-file-path { font-family: var(--font-monospace); font-size: 12px; color: var(--text-muted); margin-bottom: 8px; padding: 4px 8px; background-color: var(--background-secondary); border-radius: 4px; }
+.tool-approval-diff { margin: 8px 0 12px 0; }
+.diff-view { font-family: var(--font-monospace); font-size: 12px; border: 1px solid var(--background-modifier-border); border-radius: 4px; overflow-x: auto; max-height: 300px; overflow-y: auto; }
+.diff-line { padding: 1px 8px; white-space: pre; }
+.diff-add { background-color: rgba(0, 180, 0, 0.15); color: var(--text-normal); }
+.diff-remove { background-color: rgba(220, 0, 0, 0.15); color: var(--text-normal); }
+.diff-context { background-color: transparent; color: var(--text-muted); }
+.tool-approval-raw { margin: 12px 0; font-size: 12px; }
+.tool-approval-raw summary { cursor: pointer; color: var(--text-muted); }
+.tool-approval-raw pre { background-color: var(--background-secondary); border: 1px solid var(--background-modifier-border); border-radius: 4px; padding: 8px; overflow-x: auto; font-size: 11px; max-height: 200px; overflow-y: auto; }
+.tool-approval-buttons { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--background-modifier-border); }
+.tool-approval-btn { padding: 6px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; border: 1px solid var(--background-modifier-border); }
+.tool-approval-btn-approve { background-color: var(--interactive-accent); color: var(--text-on-accent); border: none; }
+.tool-approval-btn-approve:hover { background-color: var(--interactive-accent-hover); }
+.tool-approval-btn-deny { background-color: var(--background-secondary); color: var(--text-normal); }
+.tool-approval-btn-deny:hover { background-color: var(--background-modifier-hover); }
+
+/* ============================================================
+ * Claude Code v2 - Session Picker
+ * ============================================================ */
+.session-picker-item { padding: 4px 0; }
+.session-picker-top-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.session-picker-summary { font-weight: 600; font-size: 14px; color: var(--text-normal); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.session-picker-delete { flex-shrink: 0; padding: 2px; color: var(--text-muted); opacity: 0.5; background: none; border: none; cursor: pointer; border-radius: 4px; }
+.session-picker-delete:hover { opacity: 1; color: var(--text-error); background-color: var(--background-modifier-hover); }
+.session-picker-preview { font-size: 12px; color: var(--text-muted); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.session-picker-meta { display: flex; gap: 12px; font-size: 11px; color: var(--text-faint); margin-top: 2px; }

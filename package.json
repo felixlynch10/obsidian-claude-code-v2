@@ -1,0 +1,26 @@
+{
+  "name": "obsidian-claude-code-v2",
+  "version": "2.0.0",
+  "description": "Embed Claude Code CLI in an Obsidian sidebar terminal",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "version": "node version-bump.mjs && git add manifest.json versions.json"
+  },
+  "keywords": ["obsidian", "claude", "terminal", "ai"],
+  "author": "felixlynch10",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "esbuild": "^0.21.5",
+    "obsidian": "^1.7.2",
+    "tslib": "^2.6.0",
+    "typescript": "^5.5.0"
+  },
+  "dependencies": {
+    "@xterm/addon-fit": "^0.10.0",
+    "@xterm/addon-web-links": "^0.11.0",
+    "@xterm/xterm": "^5.5.0"
+  }
+}

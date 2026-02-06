@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-claude-code-v2",
+  "name": "Claude Code Sidebar v2",
+  "version": "2.0.0",
+  "minAppVersion": "1.5.0",
+  "description": "Claude Code in Obsidian sidebar with tool approval UI and session management",
+  "author": "felixlynch10",
+  "authorUrl": "https://github.com/felixlynch10",
+  "isDesktopOnly": true
+}
